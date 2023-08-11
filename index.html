@@ -1,345 +1,261 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Boutique | Ecommerce bootstrap template</title>
-  <meta name="description" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="robots" content="all,follow">
-  <!-- gLightbox gallery-->
-  <link rel="stylesheet" href="vendor/glightbox/css/glightbox.min.css">
-  <!-- Range slider-->
-  <link rel="stylesheet" href="vendor/nouislider/nouislider.min.css">
-  <!-- Choices CSS-->
-  <link rel="stylesheet" href="vendor/choices.js/public/assets/styles/choices.min.css">
-  <!-- Swiper slider-->
-  <link rel="stylesheet" href="vendor/swiper/swiper-bundle.min.css">
-  <!-- Google fonts-->
-  <link rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;400;700&amp;display=swap">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Martel+Sans:wght@300;400;800&amp;display=swap">
-  <!-- theme stylesheet-->
-  <link rel="stylesheet" href="css/style.default.css" id="theme-stylesheet">
-  <!-- Custom stylesheet - for your changes-->
-  <link rel="stylesheet" href="css/custom.css">
-  <!-- Favicon-->
-  <link rel="shortcut icon" href="img/favicon.png">
+    <title>BC56 group 5 Capstone JS</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Remember create file tailwind.config.js -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+    <!-- Font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Flowbite CSS -->
+    <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.0/flowbite.min.css" rel="stylesheet" /> -->
+
+    <!-- MY CSS -->
+    <link rel="stylesheet" href="./css/index.css">
 </head>
 
 <body>
-  <div class="page-holder">
-    <!-- navbar-->
-    <header class="header bg-white">
-      <div class="container px-lg-3">
-        <nav class="navbar navbar-expand-lg navbar-light py-3 px-lg-0"><a class="navbar-brand" href="index.html"><span
-              class="fw-bold text-uppercase text-dark">Boutique</span></a>
-          <button class="navbar-toggler navbar-toggler-end" type="button" data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-            aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto">
-              <li class="nav-item">
-                <!-- Link--><a class="nav-link active" href="index.html">Home</a>
-              </li>
-              <li class="nav-item">
-                <!-- Link--><a class="nav-link" href="#">Shop</a>
-              </li>
-              <li class="nav-item">
-                <!-- Link--><a class="nav-link" href="#">Product detail</a>
-              </li>
-              <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" id="pagesDropdown" href="#"
-                  data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pages</a>
-                <div class="dropdown-menu mt-3 shadow-sm" aria-labelledby="pagesDropdown"><a
-                    class="dropdown-item border-0 transition-link" href="index.html">Homepage</a><a
-                    class="dropdown-item border-0 transition-link" href="#">Category</a><a
-                    class="dropdown-item border-0 transition-link" href="#">Product detail</a><a
-                    class="dropdown-item border-0 transition-link" href="cart.html">Shopping cart</a><a
-                    class="dropdown-item border-0 transition-link" href="#">Checkout</a></div>
-              </li>
-            </ul>
-            <ul class="navbar-nav ms-auto">
-              <li class="nav-item"><a class="nav-link" href="cart.html"> <i
-                    class="fas fa-dolly-flatbed me-1 text-gray"></i>Cart<small
-                    class="text-gray fw-normal">(2)</small></a></li>
-              <li class="nav-item"><a class="nav-link" href="./admin/admin.html"> <i
-                    class="fas fa-user me-1 text-gray fw-normal"></i>Admin Page</a></li>
-            </ul>
-          </div>
-        </nav>
-      </div>
-    </header>
 
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#productView">
-      Launch Product View Modal
-    </button>
-    <!--  Modal -->
-    <div class="modal fade" id="productView" tabindex="-1">
-      <div class="modal-dialog modal-lg modal-dialog-centered">
-        <div class="modal-content overflow-hidden border-0">
-          <button class="btn-close p-4 position-absolute top-0 end-0 z-index-20 shadow-0" type="button"
-            data-bs-dismiss="modal" aria-label="Close"></button>
-          <div class="modal-body p-0">
-            <div class="row align-items-stretch">
-              <div class="col-lg-6 p-lg-0"><a class="glightbox product-view d-block h-100 bg-cover bg-center"
-                  style="background: url(img/product-5.jpg)" href="img/product-5.jpg" data-gallery="gallery1"
-                  data-glightbox="Red digital smartwatch"></a><a class="glightbox d-none" href="img/product-5-alt-1.jpg"
-                  data-gallery="gallery1" data-glightbox="Red digital smartwatch"></a><a class="glightbox d-none"
-                  href="img/product-5-alt-2.jpg" data-gallery="gallery1" data-glightbox="Red digital smartwatch"></a>
-              </div>
-              <div class="col-lg-6">
-                <div class="p-4 my-md-4">
-                  <ul class="list-inline mb-2">
-                    <li class="list-inline-item m-0"><i class="fas fa-star small text-warning"></i></li>
-                    <li class="list-inline-item m-0 1"><i class="fas fa-star small text-warning"></i></li>
-                    <li class="list-inline-item m-0 2"><i class="fas fa-star small text-warning"></i></li>
-                    <li class="list-inline-item m-0 3"><i class="fas fa-star small text-warning"></i></li>
-                    <li class="list-inline-item m-0 4"><i class="fas fa-star small text-warning"></i></li>
-                  </ul>
-                  <h2 class="h4">Red digital smartwatch</h2>
-                  <p class="text-muted">$250</p>
-                  <p class="text-sm mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In ut ullamcorper
-                    leo, eget euismod orci. Cum sociis natoque penatibus et magnis dis parturient montes nascetur
-                    ridiculus mus. Vestibulum ultricies aliquam convallis.</p>
-                  <div class="row align-items-stretch mb-4 gx-0">
-                    <div class="col-sm-7">
-                      <div class="border d-flex align-items-center justify-content-between py-1 px-3"><span
-                          class="small text-uppercase text-gray mr-4 no-select">Quantity</span>
-                        <div class="quantity">
-                          <button class="dec-btn p-0"><i class="fas fa-caret-left"></i></button>
-                          <input class="form-control border-0 shadow-0 p-0" type="text" value="1">
-                          <button class="inc-btn p-0"><i class="fas fa-caret-right"></i></button>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-sm-5"><a
-                        class="btn btn-dark btn-sm w-100 h-100 d-flex align-items-center justify-content-center px-0"
-                        href="cart.html">Add to cart</a></div>
-                  </div>
-                </div>
-              </div>
+    <nav class="fixed w-full z-20 top-0 left-0">
+        <div class="container flex flex-wrap items-center justify-between mx-auto p-4">
+            <a href="" class="flex items-center logo">
+                <img src="https://flowbite.com/docs/images/logo.svg" class="h-8 mr-3" alt="Logo">
+                <span class="self-center text-2xl font-semibold whitespace-nowrap">BC56 G5 JS</span>
+            </a>
+            <div class="flex md:order-2">
+                <button type="button" class="btnRight"><i class="fa-solid fa-cart-shopping"></i>
+                    Cart</button>
+                <button type="button" class="btnRight2"><a href="./admin/admin.html"><i
+                            class="fa-solid fa-user-tie"></i> Admin Page</a></button>
+                <button data-collapse-toggle="navbar-sticky" type="button"
+                    class="btnToggle inline-flex items-center p-2 w-10 h-10 justify-center text-sm rounded-lg md:hidden"
+                    aria-controls="navbar-sticky" aria-expanded="false">
+                    <span class="sr-only">Open main menu</span>
+                    <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 17 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M1 1h15M1 7h15M1 13h15" />
+                    </svg>
+                </button>
             </div>
-          </div>
+            <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
+                <ul
+                    class="flex flex-col p-4 md:p-0 mt-4 font-medium border rounded-lg md:flex-row md:space-x-8 md:mt-0 md:border-0">
+                    <li>
+                        <a href="#" class="active block py-2 pl-3 pr-4 rounded md:bg-transparent md:p-0"
+                            aria-current="page">Home</a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="block py-2 pl-3 pr-4 rounded md:hover:bg-transparent md:p-0 md:dark:hover:bg-transparent">About</a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="block py-2 pl-3 pr-4 rounded md:hover:bg-transparent md:p-0 md:dark:hover:bg-transparent">Services</a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="block py-2 pl-3 pr-4 rounded md:hover:bg-transparent md:p-0 md:dark:hover:bg-transparent">Contact</a>
+                    </li>
+                </ul>
+            </div>
         </div>
-      </div>
-    </div>
+    </nav>
 
-    <div class="container">
-      <!-- PRODUCTS-->
-      <section class="py-5">
-        <header>
-          <h2 class="h5 text-uppercase mb-4">Products</h2>
-        </header>
-        <div class="row">
-          <!-- PRODUCT-->
-          <div class="col-xl-3 col-lg-4 col-sm-6">
-            <div class="product text-center">
-              <div class="position-relative mb-3">
-                <div class="badge text-white bg-success">Best sale</div><a class="d-block" href="#"><img
-                    class="img-fluid w-100" src="img/product-1.jpg" alt="..."></a>
-                <div class="product-overlay">
-                  <ul class="mb-0 list-inline">
-                    <li class="list-inline-item m-0 p-0"><a class="btn btn-sm btn-dark" href="cart.html">Add to cart</a>
-                    </li>
-                    <!-- <li class="list-inline-item me-0"><a class="btn btn-sm btn-outline-dark" href="#productView"
-                        data-bs-toggle="modal"><i class="fas fa-expand"></i></a></li> -->
-                  </ul>
-                </div>
-              </div>
-              <h6> <a class="reset-anchor" href="#">Kui Ye Chen’s AirPods</a></h6>
-              <p class="small text-muted">$250</p>
-            </div>
-          </div>
-          <!-- PRODUCT-->
-          <div class="col-xl-3 col-lg-4 col-sm-6">
-            <div class="product text-center">
-              <div class="position-relative mb-3">
-                <div class="badge text-white bg-primary">Sale off</div><a class="d-block" href="#"><img
-                    class="img-fluid w-100" src="img/product-2.jpg" alt="..."></a>
-                <div class="product-overlay">
-                  <ul class="mb-0 list-inline">
-                    <li class="list-inline-item m-0 p-0"><a class="btn btn-sm btn-dark" href="cart.html">Add to cart</a>
-                    </li>
-                    <!-- <li class="list-inline-item me-0"><a class="btn btn-sm btn-outline-dark" href="#productView"
-                        data-bs-toggle="modal"><i class="fas fa-expand"></i></a></li> -->
-                  </ul>
-                </div>
-              </div>
-              <h6> <a class="reset-anchor" href="#">Air Jordan 12 gym red</a></h6>
-              <p class="small text-muted">$300</p>
-            </div>
-          </div>
-          <!-- PRODUCT-->
-          <div class="col-xl-3 col-lg-4 col-sm-6">
-            <div class="product text-center">
-              <div class="position-relative mb-3">
-                <div class="badge text-white bg-"></div><a class="d-block" href="#"><img class="img-fluid w-100"
-                    src="img/product-3.jpg" alt="..."></a>
-                <div class="product-overlay">
-                  <ul class="mb-0 list-inline">
-                    <li class="list-inline-item m-0 p-0"><a class="btn btn-sm btn-dark" href="cart.html">Add to cart</a>
-                    </li>
-                    <!-- <li class="list-inline-item me-0"><a class="btn btn-sm btn-outline-dark" href="#productView"
-                        data-bs-toggle="modal"><i class="fas fa-expand"></i></a></li> -->
-                  </ul>
-                </div>
-              </div>
-              <h6> <a class="reset-anchor" href="#">Cyan cotton t-shirt</a></h6>
-              <p class="small text-muted">$25</p>
-            </div>
-          </div>
-          <!-- PRODUCT-->
-          <div class="col-xl-3 col-lg-4 col-sm-6">
-            <div class="product text-center">
-              <div class="position-relative mb-3">
-                <div class="badge text-white bg-info">New</div><a class="d-block" href="#"><img class="img-fluid w-100"
-                    src="img/product-4.jpg" alt="..."></a>
-                <div class="product-overlay">
-                  <ul class="mb-0 list-inline">
-                    <li class="list-inline-item m-0 p-0"><a class="btn btn-sm btn-dark" href="cart.html">Add to cart</a>
-                    </li>
-                    <!-- <li class="list-inline-item me-0"><a class="btn btn-sm btn-outline-dark" href="#productView"
-                        data-bs-toggle="modal"><i class="fas fa-expand"></i></a></li> -->
-                  </ul>
-                </div>
-              </div>
-              <h6> <a class="reset-anchor" href="#">Timex Unisex Originals</a></h6>
-              <p class="small text-muted">$351</p>
-            </div>
-          </div>
-
-        </div>
-      </section>
-      <!-- SERVICES-->
-      <section class="py-5 bg-light">
+    <section class="products py-20 w-full">
         <div class="container">
-          <div class="row text-center gy-3">
-            <div class="col-lg-4">
-              <div class="d-inline-block">
-                <div class="d-flex align-items-end">
-                  <svg class="svg-icon svg-icon-big svg-icon-light">
-                    <use xlink:href="#delivery-time-1"> </use>
-                  </svg>
-                  <div class="text-start ms-3">
-                    <h6 class="text-uppercase mb-1">Free shipping</h6>
-                    <p class="text-sm mb-0 text-muted">Free shipping worldwide</p>
-                  </div>
+            <div class="title text-2xl text-center font-bold">- Products -</div>
+            <div class="list grid grid-cols-4 text-center">
+                <!-- item -->
+                <div class="item mr-4 p-2 mt-4">
+                    <img src="https://cdn.tgdd.vn/Products/Images/42/114115/iphone-x-64gb-hh-600x600.jpg" alt="">
+                    <div class="content">
+                        <div class="detail">
+                            <h4 class="text-xl font-semibold py-2">iPhone X</h4>
+                            <p>Screen 68</p>
+                            <p>Camera sau: 2 camera 12MP</p>
+                            <p>Camera trước: 7MP</p>
+                            <p>Thiết kế mang tính đột phá</p>
+                        </div>
+                        <div class="price">
+                            <h4 class="text-lg font-semibold py-1">1000$</h4>
+                            <div>
+                                <i class="fa fa-star text-yellow-400" aria-hidden="true"></i>
+                                <i class="fa fa-star text-yellow-400" aria-hidden="true"></i>
+                                <i class="fa fa-star text-yellow-400" aria-hidden="true"></i>
+                                <i class="fa fa-star text-yellow-400" aria-hidden="true"></i>
+                                <i class="fa fa-star " aria-hidden="true"></i>
+                            </div>
+                            <!-- <div class="quantity">
+                                <button class="dec-btn p-0"><i class="fas fa-caret-left"></i></button>
+                                <input class="form-control text-center border-0 shadow-0 p-0 w-1/6" type="text" value="1">
+                                <button class="inc-btn p-0"><i class="fas fa-caret-right"></i></button>
+                            </div> -->
+                            <button class="btnAdd"><i class="fa-solid fa-cart-shopping"></i> Add to cart</button>
+                        </div>
+                    </div>
                 </div>
-              </div>
-            </div>
-            <div class="col-lg-4">
-              <div class="d-inline-block">
-                <div class="d-flex align-items-end">
-                  <svg class="svg-icon svg-icon-big svg-icon-light">
-                    <use xlink:href="#helpline-24h-1"> </use>
-                  </svg>
-                  <div class="text-start ms-3">
-                    <h6 class="text-uppercase mb-1">24 x 7 service</h6>
-                    <p class="text-sm mb-0 text-muted">Free shipping worldwide</p>
-                  </div>
+                <div class="item mr-4 p-2 mt-4">
+                    <img src="https://cdn.tgdd.vn/Products/Images/42/114115/iphone-x-64gb-hh-600x600.jpg" alt="">
+                    <div class="content">
+                        <div class="detail">
+                            <h4 class="text-xl font-semibold py-2">iPhone X</h4>
+                            <p>Screen 68</p>
+                            <p>Camera sau: 2 camera 12MP</p>
+                            <p>Camera trước: 7MP</p>
+                            <p>Thiết kế mang tính đột phá</p>
+                        </div>
+                        <div class="price">
+                            <h4 class="text-lg font-semibold py-1">1000$</h4>
+                            <div>
+                                <i class="fa fa-star text-yellow-400" aria-hidden="true"></i>
+                                <i class="fa fa-star text-yellow-400" aria-hidden="true"></i>
+                                <i class="fa fa-star text-yellow-400" aria-hidden="true"></i>
+                                <i class="fa fa-star text-yellow-400" aria-hidden="true"></i>
+                                <i class="fa fa-star " aria-hidden="true"></i>
+                            </div>
+                            <!-- <div class="quantity">
+                                <button class="dec-btn p-0"><i class="fas fa-caret-left"></i></button>
+                                <input class="form-control text-center border-0 shadow-0 p-0 w-1/6" type="text" value="1">
+                                <button class="inc-btn p-0"><i class="fas fa-caret-right"></i></button>
+                            </div> -->
+                            <button class="btnAdd"><i class="fa-solid fa-cart-shopping"></i> Add to cart</button>
+                        </div>
+                    </div>
                 </div>
-              </div>
-            </div>
-            <div class="col-lg-4">
-              <div class="d-inline-block">
-                <div class="d-flex align-items-end">
-                  <svg class="svg-icon svg-icon-big svg-icon-light">
-                    <use xlink:href="#label-tag-1"> </use>
-                  </svg>
-                  <div class="text-start ms-3">
-                    <h6 class="text-uppercase mb-1">Festivaloffers</h6>
-                    <p class="text-sm mb-0 text-muted">Free shipping worldwide</p>
-                  </div>
+                <div class="item mr-4 p-2 mt-4">
+                    <img src="https://cdn.tgdd.vn/Products/Images/42/114115/iphone-x-64gb-hh-600x600.jpg" alt="">
+                    <div class="content">
+                        <div class="detail">
+                            <h4 class="text-xl font-semibold py-2">iPhone X</h4>
+                            <p>Screen 68</p>
+                            <p>Camera sau: 2 camera 12MP</p>
+                            <p>Camera trước: 7MP</p>
+                            <p>Thiết kế mang tính đột phá</p>
+                        </div>
+                        <div class="price">
+                            <h4 class="text-lg font-semibold py-1">1000$</h4>
+                            <div>
+                                <i class="fa fa-star text-yellow-400" aria-hidden="true"></i>
+                                <i class="fa fa-star text-yellow-400" aria-hidden="true"></i>
+                                <i class="fa fa-star text-yellow-400" aria-hidden="true"></i>
+                                <i class="fa fa-star text-yellow-400" aria-hidden="true"></i>
+                                <i class="fa fa-star " aria-hidden="true"></i>
+                            </div>
+                            <!-- <div class="quantity">
+                                <button class="dec-btn p-0"><i class="fas fa-caret-left"></i></button>
+                                <input class="form-control text-center border-0 shadow-0 p-0 w-1/6" type="text" value="1">
+                                <button class="inc-btn p-0"><i class="fas fa-caret-right"></i></button>
+                            </div> -->
+                            <button class="btnAdd"><i class="fa-solid fa-cart-shopping"></i> Add to cart</button>
+                        </div>
+                    </div>
                 </div>
-              </div>
+                <div class="item mr-4 p-2 mt-4">
+                    <img src="https://cdn.tgdd.vn/Products/Images/42/114115/iphone-x-64gb-hh-600x600.jpg" alt="">
+                    <div class="content">
+                        <div class="detail">
+                            <h4 class="text-xl font-semibold py-2">iPhone X</h4>
+                            <p>Screen 68</p>
+                            <p>Camera sau: 2 camera 12MP</p>
+                            <p>Camera trước: 7MP</p>
+                            <p>Thiết kế mang tính đột phá</p>
+                        </div>
+                        <div class="price">
+                            <h4 class="text-lg font-semibold py-1">1000$</h4>
+                            <div>
+                                <i class="fa fa-star text-yellow-400" aria-hidden="true"></i>
+                                <i class="fa fa-star text-yellow-400" aria-hidden="true"></i>
+                                <i class="fa fa-star text-yellow-400" aria-hidden="true"></i>
+                                <i class="fa fa-star text-yellow-400" aria-hidden="true"></i>
+                                <i class="fa fa-star " aria-hidden="true"></i>
+                            </div>
+                            <!-- <div class="quantity">
+                                <button class="dec-btn p-0"><i class="fas fa-caret-left"></i></button>
+                                <input class="form-control text-center border-0 shadow-0 p-0 w-1/6" type="text" value="1">
+                                <button class="inc-btn p-0"><i class="fas fa-caret-right"></i></button>
+                            </div> -->
+                            <button class="btnAdd"><i class="fa-solid fa-cart-shopping"></i> Add to cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="item mr-4 p-2 mt-4">
+                    <img src="https://cdn.tgdd.vn/Products/Images/42/114115/iphone-x-64gb-hh-600x600.jpg" alt="">
+                    <div class="content">
+                        <div class="detail">
+                            <h4 class="text-xl font-semibold py-2">iPhone X</h4>
+                            <p>Screen 68</p>
+                            <p>Camera sau: 2 camera 12MP</p>
+                            <p>Camera trước: 7MP</p>
+                            <p>Thiết kế mang tính đột phá</p>
+                        </div>
+                        <div class="price">
+                            <h4 class="text-lg font-semibold py-1">1000$</h4>
+                            <div>
+                                <i class="fa fa-star text-yellow-400" aria-hidden="true"></i>
+                                <i class="fa fa-star text-yellow-400" aria-hidden="true"></i>
+                                <i class="fa fa-star text-yellow-400" aria-hidden="true"></i>
+                                <i class="fa fa-star text-yellow-400" aria-hidden="true"></i>
+                                <i class="fa fa-star " aria-hidden="true"></i>
+                            </div>
+                            <!-- <div class="quantity">
+                                <button class="dec-btn p-0"><i class="fas fa-caret-left"></i></button>
+                                <input class="form-control text-center border-0 shadow-0 p-0 w-1/6" type="text" value="1">
+                                <button class="inc-btn p-0"><i class="fas fa-caret-right"></i></button>
+                            </div> -->
+                            <button class="btnAdd"><i class="fa-solid fa-cart-shopping"></i> Add to cart</button>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </section>
-    </div>
+    </section>
 
-    <!-- Footer -->
-    <footer class="bg-dark text-white mt-5">
-      <div class="container py-4">
-        <div class="row py-5">
-          <div class="col-md-4 mb-3 mb-md-0">
-            <h6 class="text-uppercase mb-3">Customer services</h6>
-            <ul class="list-unstyled mb-0">
-              <li><a class="footer-link" href="#!">Help &amp; Contact Us</a></li>
-              <li><a class="footer-link" href="#!">Returns &amp; Refunds</a></li>
-              <li><a class="footer-link" href="#!">Online Stores</a></li>
-              <li><a class="footer-link" href="#!">Terms &amp; Conditions</a></li>
-            </ul>
-          </div>
-          <div class="col-md-4 mb-3 mb-md-0">
-            <h6 class="text-uppercase mb-3">Company</h6>
-            <ul class="list-unstyled mb-0">
-              <li><a class="footer-link" href="#!">What We Do</a></li>
-              <li><a class="footer-link" href="#!">Available Services</a></li>
-              <li><a class="footer-link" href="#!">Latest Posts</a></li>
-              <li><a class="footer-link" href="#!">FAQs</a></li>
-            </ul>
-          </div>
-          <div class="col-md-4">
-            <h6 class="text-uppercase mb-3">Social media</h6>
-            <ul class="list-unstyled mb-0">
-              <li><a class="footer-link" href="#!">Twitter</a></li>
-              <li><a class="footer-link" href="#!">Instagram</a></li>
-              <li><a class="footer-link" href="#!">Tumblr</a></li>
-              <li><a class="footer-link" href="#!">Pinterest</a></li>
-            </ul>
-          </div>
-        </div>
-        <div class="border-top pt-4" style="border-color: #1d1d1d !important">
-          <div class="row">
-            <div class="col-md-6 text-center text-md-start">
-              <p class="small text-muted mb-0">2023 BC56 Group 5.</p>
+    <!-- <div class="col-xl-3 col-lg-4 col-sm-6">
+        <div class="product text-center">
+            <div class="position-relative mb-3">
+                <div class="badge text-white bg-primary">Sale off</div><a class="d-block" href="#"><img
+                        class="img-fluid w-100" src="img/product-2.jpg" alt="..."></a>
+                <div class="product-overlay">
+                    <ul class="mb-0 list-inline">
+                        <li class="list-inline-item m-0 p-0"><a class="btn btn-sm btn-dark" href="cart.html">Add to
+                                cart</a>
+                        </li>
+                        <li class="list-inline-item me-0"><a class="btn btn-sm btn-outline-dark" href="#productView"
+                    data-bs-toggle="modal"><i class="fas fa-expand"></i></a></li>
+                    </ul>
+                </div>
             </div>
-          </div>
-        </div>
-      </div>
-  </div>
-  </footer>
-  <!-- JavaScript files-->
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="vendor/nouislider/nouislider.min.js"></script>
-  <script src="vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="vendor/choices.js/public/assets/scripts/choices.min.js"></script>
-  <script src="js/front.js"></script>
-  <script>
-    // ------------------------------------------------------- //
-    //   Inject SVG Sprite - 
-    //   see more here 
-    //   https://css-tricks.com/ajaxing-svg-sprite/
-    // ------------------------------------------------------ //
-    function injectSvgSprite(path) {
+            <h6> <a class="reset-anchor" href="#">Air Jordan 12 gym red</a></h6>
+            <p class="small text-muted">$300</p>
+        </div> -->
 
-      var ajax = new XMLHttpRequest();
-      ajax.open("GET", path, true);
-      ajax.send();
-      ajax.onload = function (e) {
-        var div = document.createElement("div");
-        div.className = 'd-none';
-        div.innerHTML = ajax.responseText;
-        document.body.insertBefore(div, document.body.childNodes[0]);
-      }
-    }
-    // this is set to BootstrapTemple website as you cannot 
-    // inject local SVG sprite (using only 'icons/orion-svg-sprite.svg' path)
-    // while using file:// protocol
-    // pls don't forget to change to your domain :)
-    injectSvgSprite('https://bootstraptemple.com/files/icons/orion-svg-sprite.svg');
+    <!-- Flowbite JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.0/flowbite.min.js"></script>
 
-  </script>
-  <!-- FontAwesome CSS - loading as last, so it doesn't block rendering-->
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
-    integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-  </div>
+    <!-- Lodash -->
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
 
-  <!-- MY JS -->
-  <script src="./controllers/index.js"></script>
+    <!-- Model -->
+    <script src="./models/DienThoai.JS"></script>
+
+    <!-- My Library -->
+    <script src="./util/method.js"></script>
+
+    <!-- My JS -->
+    <script src="./controllers/index.js"></script>
 </body>
+
+
 
 </html>
