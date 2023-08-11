@@ -387,3 +387,8 @@ function upperCase(string) {
   words = words.map((w) => w.charAt(0).toUpperCase() + w.slice(1));
   return words.join(" ");
 }
+
+
+
+// render dienthoai
+// function renderProductList()
