@@ -1,3 +1,4 @@
+// Render danh sách product
 export let renderProductList = (list) => {
   let contentHTML = "";
   list
@@ -39,6 +40,49 @@ export let renderProductList = (list) => {
   document.getElementById("tbodyTable").innerHTML = contentHTML;
 };
 
+// Show thông báo
 export let onSuccess = (mess) => {
   Swal.fire(mess, "", "success");
+};
+
+// Lấy thông tin từ form thêm
+export let getDataForm = (a) => {
+  let id = document.getElementById(`id${a}`).value;
+  let name = document.getElementById(`name${a}`).value;
+  let price = document.getElementById(`price${a}`).value;
+  let screen = document.getElementById(`screen${a}`).value;
+  let backCamera = document.getElementById(`backCam${a}`).value;
+  let frontCamera = document.getElementById(`frontCam${a}`).value;
+  let img = document.getElementById(`img${a}`).value;
+  let desc = document.getElementById(`desc${a}`).value;
+  let type = document.getElementById(`type${a}`).value;
+
+  return {
+    id,
+    name,
+    price,
+    screen,
+    name,
+    backCamera,
+    frontCamera,
+    img,
+    desc,
+    type,
+  };
+};
+
+// Đưa thông tin lên form update
+export let showDataForm = (data) => {
+  let { id, name, price, screen, backCamera, frontCamera, img, desc, type } =
+    data;
+
+  document.getElementById("idUpdate").value = id;
+  document.getElementById("nameUpdate").value = name;
+  document.getElementById("priceUpdate").value = price;
+  document.getElementById("screenUpdate").value = screen;
+  document.getElementById("backCamUpdate").value = backCamera;
+  document.getElementById("frontCamUpdate").value = frontCamera;
+  document.getElementById("imgUpdate").value = img;
+  document.getElementById("descUpdate").value = desc;
+  document.getElementById("typeUpdate").value = type;
 };

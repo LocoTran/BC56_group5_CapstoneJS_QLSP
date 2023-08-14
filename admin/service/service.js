@@ -14,9 +14,35 @@ let deleteProduct = (id) => {
   });
 };
 
+let addProduct = (product) => {
+  return axios({
+    url: BASE_URL,
+    method: "POST",
+    data: product,
+  });
+};
+
+let getDetail = (id) => {
+  return axios({
+    url: `${BASE_URL}/${id}`,
+    method: "GET",
+  });
+};
+
+let updateProduct = (id, updPro) => {
+  return axios({
+    url: `${BASE_URL}/${id}`,
+    method: "PUT",
+    data: updPro,
+  });
+};
+
 let productServ = {
   getList,
   deleteProduct,
+  addProduct,
+  getDetail,
+  updateProduct,
 };
 
 export default productServ;

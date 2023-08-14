@@ -42,17 +42,6 @@ nav {
   background-color: $color-white-1;
   border-bottom: 1px solid $color-gray-2;
 
-  //   button.btnRight {
-  //     @include btnTheme();
-  //     color: $color-white-1;
-  //     background-color: $color-blue-7;
-  //     &:hover {
-  //       background-color: $color-blue-8;
-  //     }
-  //     &:focus {
-  //       outline: $base-outline * 2 solid $color-blue-3;
-  //     }
-  //   }
   button.btnRight2 {
     @include btnTheme();
     color: $color-white-1;
@@ -141,15 +130,6 @@ nav {
       }
     }
 
-    // button.btnRight {
-    //   background-color: $color-blue-6;
-    //   &:hover {
-    //     background-color: $color-blue-7;
-    //   }
-    //   &:focus {
-    //     outline: $base-outline * 2 solid $color-blue-8;
-    //   }
-    // }
     button.btnRight2 {
       background-color: $color-gray-5;
       &:hover {
