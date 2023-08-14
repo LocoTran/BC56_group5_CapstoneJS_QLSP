@@ -109,8 +109,6 @@ nav {
     }
     & button {
       @include btnTheme();
-      color: $color-white-1;
-      background-color: $color-gray-9;
       &:hover {
         background-color: $color-gray-5;
       }

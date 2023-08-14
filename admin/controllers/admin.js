@@ -1,5 +1,6 @@
 import productServ from "../service/service.js";
-import { renderProductList } from "../controllers/controller.js";
+import { onSuccess, renderProductList } from "../controllers/controller.js";
+
 //render danh sách product
 let fetchProduct = () => {
   productServ
@@ -13,3 +14,17 @@ let fetchProduct = () => {
     });
 };
 fetchProduct();
+
+window.deleteProduct = (id) => {
+  console.log("yes");
+  productServ
+    .deleteProduct(id)
+    .then((res) => {
+      console.log("🚀👾👽 ~ .then ~ res:", res);
+      fetchProduct();
+      onSuccess("Xóa sản phẩm thành công");
+    })
+    .catch((err) => {
+      console.log("🚀👾👽 ~ err:", err);
+    });
+};

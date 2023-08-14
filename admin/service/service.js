@@ -7,10 +7,16 @@ let getList = () => {
   });
 };
 
-
+let deleteProduct = (id) => {
+  return axios({
+    url: `${BASE_URL}/${id}`,
+    method: "DELETE",
+  });
+};
 
 let productServ = {
   getList,
+  deleteProduct,
 };
 
 export default productServ;
