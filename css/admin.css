@@ -1,0 +1,163 @@
+.container {
+  width: 90% !important;
+  margin: 0 auto;
+}
+
+nav {
+  background-color: rgb(255, 255, 255);
+  border-bottom: 1px solid rgb(229, 231, 235);
+}
+nav button.btnRight2 {
+  font-weight: 500;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  padding: 0.5rem 1rem;
+  text-align: center;
+  margin: 0 0.5rem;
+  color: rgb(255, 255, 255);
+  background-color: rgb(17, 24, 39);
+}
+nav button.btnRight2:hover {
+  background-color: rgb(107, 114, 128);
+}
+nav button.btnRight2:focus {
+  outline: 4px solid rgb(156, 163, 175);
+}
+nav button.btnToggle {
+  color: rgb(107, 114, 128);
+}
+nav button.btnToggle:hover {
+  background-color: rgb(243, 244, 246);
+}
+nav button.btnToggle:focus {
+  outline: 2px solid rgb(229, 231, 235);
+}
+nav #navbar-sticky {
+  border-color: rgb(243, 244, 246);
+  background-color: rgb(249, 250, 251);
+}
+nav #navbar-sticky a {
+  color: rgb(17, 24, 39);
+}
+nav #navbar-sticky a:hover {
+  background-color: rgb(243, 244, 246);
+}
+nav #navbar-sticky a.active {
+  color: rgb(29, 78, 216);
+  background-color: transparent;
+}
+
+.adTable .bodyTable {
+  border-collapse: collapse;
+  border-width: 1px;
+  border-color: rgb(156, 163, 175);
+}
+.adTable .bodyTable th {
+  border-width: 1px;
+  border-color: rgb(229, 231, 235);
+}
+.adTable .bodyTable td {
+  border-width: 1px;
+  border-color: rgb(229, 231, 235);
+}
+.adTable .bodyTable td img {
+  width: 4rem;
+}
+.adTable .bodyTable button {
+  font-weight: 500;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  padding: 0.5rem 1rem;
+  text-align: center;
+  margin: 0 0.5rem;
+  color: rgb(255, 255, 255);
+  background-color: rgb(17, 24, 39);
+}
+.adTable .bodyTable button:hover {
+  background-color: rgb(107, 114, 128);
+}
+.adTable .bodyTable button:focus {
+  outline: 4px solid rgb(156, 163, 175);
+}
+.adTable button.btnThemSp {
+  font-weight: 500;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  padding: 0.5rem 1rem;
+  text-align: center;
+  margin: 0 0.5rem;
+  color: rgb(255, 255, 255);
+  background-color: rgb(29, 78, 216);
+}
+.adTable button.btnThemSp:hover {
+  background-color: rgb(30, 64, 175);
+}
+.adTable button.btnThemSp:focus {
+  outline: 4px solid rgb(147, 197, 253);
+}
+
+@media (prefers-color-scheme: dark) {
+  nav {
+    background-color: rgb(17, 24, 39);
+    border-bottom: 1px solid rgb(75, 85, 99);
+  }
+  nav a.logo span {
+    color: rgb(255, 255, 255);
+  }
+  nav button.btnRight2 {
+    background-color: rgb(107, 114, 128);
+  }
+  nav button.btnRight2:hover {
+    background-color: rgb(255, 255, 255);
+    color: rgb(17, 24, 39);
+  }
+  nav button.btnRight2:focus {
+    outline: 4px solid rgb(55, 65, 81);
+  }
+  nav button.btnToggle {
+    color: rgb(156, 163, 175);
+  }
+  nav button.btnToggle:hover {
+    background-color: rgb(55, 65, 81);
+  }
+  nav button.btnToggle:focus {
+    outline: 2px solid rgb(75, 85, 99);
+  }
+  nav #navbar-sticky {
+    background-color: rgb(31, 41, 55);
+    border-color: rgb(55, 65, 81);
+  }
+  nav #navbar-sticky a {
+    color: rgb(255, 255, 255);
+    border-color: rgb(55, 65, 81);
+  }
+  nav #navbar-sticky a:hover {
+    background-color: rgb(55, 65, 81);
+    color: rgb(255, 255, 255);
+  }
+}
+@media (min-width: 768px) {
+  nav #navbar-sticky {
+    background-color: rgb(255, 255, 255);
+  }
+  nav #navbar-sticky a:hover {
+    color: rgb(29, 78, 216);
+  }
+  nav #navbar-sticky a.active {
+    color: rgb(29, 78, 216);
+  }
+}
+@media (min-width: 768px) and (prefers-color-scheme: dark) {
+  nav #navbar-sticky {
+    background-color: rgb(17, 24, 39);
+  }
+  nav #navbar-sticky a:hover {
+    color: rgb(59, 130, 246);
+  }
+  nav #navbar-sticky a.active {
+    color: rgb(59, 130, 246);
+  }
+}/*# sourceMappingURL=admin.css.map */
