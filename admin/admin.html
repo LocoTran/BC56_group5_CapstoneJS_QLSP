@@ -76,6 +76,28 @@
     <section class="adTable py-20">
         <div class="container">
 
+
+            <!-- Search theo tên -->
+            <form>
+                <label for="searchByName" class="mb-2 text-sm font-medium text-gray-900  dark:text-white">Tìm sản phẩm
+                    theo tên</label>
+                <div class="relative">
+                    <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                        <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+                        </svg>
+                    </div>
+                    <!-- <label for="searchByName">Tìm sản phẩm theo tên</label> -->
+                    <input type="search" id="searchByName"
+                        class="mb-5 mt-2 block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        placeholder="Nhập tên sản phẩm cần tìm" required>
+                    <!-- <button type="submit"
+                        class="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button> -->
+                </div>
+            </form>
+
             <!-- head Table -->
             <div class="headTable grid grid-cols-2 my-2">
                 <div class="text-2xl font-semibold">Danh sách sản phẩm</div>
@@ -86,6 +108,8 @@
                     </button>
                 </div>
             </div>
+
+
 
             <!-- AddModal -->
             <div id="exModal" tabindex="-1" aria-hidden="true"
@@ -104,15 +128,16 @@
                             <span class="sr-only">Close modal</span>
                         </button>
                         <div class="px-6 py-6 lg:px-8">
-                            <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Thêm sản phẩm
+                            <h3 class="mb-2 text-xl text-center font-medium text-gray-900 dark:text-white">Thêm sản phẩm
                             </h3>
-                            <form class="grid gap-6 mb-6 md:grid-cols-2" action="#" id="formProduct">
-                                <div>
+                            <form class="grid gap-x-6 gap-y-2 mb-6 md:grid-cols-2" action="#" id="formProduct">
+                                <div class="hidden">
                                     <label for="idProduct"
-                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">ID sản
+                                        class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">ID sản
                                         phẩm</label>
-                                    <input type="text" id="idProduct"
-                                        class=" bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white">
+                                    <input type="text" id="idProduct" readonly
+                                        class="pointer-events-none bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white">
+                                    <span class="text-red-500" id="tBid"></span>
                                 </div>
                                 <div>
                                     <label for="nameProduct"
@@ -120,13 +145,15 @@
                                         phẩm</label>
                                     <input type="text" id="nameProduct"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                    <span class="text-red-500" id="tBname"></span>
                                 </div>
                                 <div>
                                     <label for="priceProduct"
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Giá sản
-                                        phẩm</label>
+                                        phẩm ($)</label>
                                     <input type="text" id="priceProduct"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                    <span class="text-red-500" id="tBprice"></span>
                                 </div>
                                 <div>
                                     <label for="screenProduct"
@@ -135,6 +162,7 @@
                                         phẩm</label>
                                     <input type="text" id="screenProduct"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                    <span class="text-red-500" id="tBscreen"></span>
                                 </div>
                                 <div>
                                     <label for="backCamProduct"
@@ -142,6 +170,7 @@
                                         sau</label>
                                     <input type="text" id="backCamProduct"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                    <span class="text-red-500" id="tBbackCam"></span>
                                 </div>
                                 <div>
                                     <label for="frontCamProduct"
@@ -149,6 +178,7 @@
                                         trước</label>
                                     <input type="text" id="frontCamProduct"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                    <span class="text-red-500" id="tBfrontCam"></span>
                                 </div>
                                 <div>
                                     <label for="imgProduct"
@@ -156,6 +186,7 @@
                                         phẩm</label>
                                     <input type="text" id="imgProduct"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                    <span class="text-red-500" id="tBimg"></span>
                                 </div>
                                 <div>
                                     <label for="descProduct"
@@ -163,6 +194,7 @@
                                         phẩm</label>
                                     <input type="text" id="descProduct"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                    <span class="text-red-500" id="tBdesc"></span>
                                 </div>
                                 <div>
                                     <label for="typeProduct"
@@ -170,6 +202,7 @@
                                         phẩm</label>
                                     <input type="text" id="typeProduct"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                    <span class="text-red-500" id="tBtype"></span>
                                 </div>
 
 
@@ -204,29 +237,30 @@
                             <span class="sr-only">Close modal</span>
                         </button>
                         <div class="px-6 py-6 lg:px-8">
-                            <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Sửa sản phẩm
-                            </h3>
-                            <form class="grid gap-6 mb-6 md:grid-cols-2" action="#" id="formUpdate">
-                                <div>
-                                    <label for="idUpdate"
-                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">ID sản
-                                        phẩm</label>
-                                    <input type="text" id="idUpdate" readonly
-                                        class="pointer-events-none bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white">
-                                </div>
+                            <div class="flex items-center justify-center">
+                                <label for="idUpdate"
+                                    class="block mb-2 mx-2 text-base font-medium text-gray-900 dark:text-white">Sửa sản
+                                    phẩm có ID: </label>
+                                <input type="text" id="idUpdate" readonly
+                                    class="block w-9 mb-2 pointer-events-none bg-gray-50 border border-gray-300 text-gray-900 text-base text-center rounded-lg p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white">
+                            </div>
+                            <form class="grid gap-x-6 gap-y-2 mb-6 md:grid-cols-2" action="#" id="formUpdate">
+
                                 <div>
                                     <label for="nameUpdate"
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tên sản
                                         phẩm</label>
                                     <input type="text" id="nameUpdate"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                    <span class="text-red-500" id="tBnameUpd"></span>
                                 </div>
                                 <div>
                                     <label for="priceUpdate"
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Giá sản
-                                        phẩm</label>
+                                        phẩm ($)</label>
                                     <input type="text" id="priceUpdate"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                    <span class="text-red-500" id="tBpriceUpd"></span>
                                 </div>
                                 <div>
                                     <label for="screenUpdate"
@@ -235,6 +269,7 @@
                                         phẩm</label>
                                     <input type="text" id="screenUpdate"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                    <span class="text-red-500" id="tBscreenUpd"></span>
                                 </div>
                                 <div>
                                     <label for="backCamUpdate"
@@ -242,6 +277,7 @@
                                         sau</label>
                                     <input type="text" id="backCamUpdate"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                    <span class="text-red-500" id="tBbackCamUpd"></span>
                                 </div>
                                 <div>
                                     <label for="frontCamUpdate"
@@ -249,6 +285,7 @@
                                         trước</label>
                                     <input type="text" id="frontCamUpdate"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                    <span class="text-red-500" id="tBfrontCamUpd"></span>
                                 </div>
                                 <div>
                                     <label for="imgUpdate"
@@ -256,6 +293,7 @@
                                         phẩm</label>
                                     <input type="text" id="imgUpdate"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                    <span class="text-red-500" id="tBimgUpd"></span>
                                 </div>
                                 <div>
                                     <label for="descUpdate"
@@ -263,6 +301,7 @@
                                         phẩm</label>
                                     <input type="text" id="descUpdate"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                    <span class="text-red-500" id="tBdescUpd"></span>
                                 </div>
                                 <div>
                                     <label for="typeUpdate"
@@ -270,6 +309,7 @@
                                         phẩm</label>
                                     <input type="text" id="typeUpdate"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                    <span class="text-red-500" id="tBtypeUpd"></span>
                                 </div>
 
 
@@ -286,12 +326,13 @@
 
 
             <!-- body -->
-            <table class="bodyTable table-auto">
+            <table class="bodyTable table-auto w-full">
                 <thead>
                     <tr>
                         <th class="p-2">ID</th>
                         <th class="p-2">Tên</th>
-                        <th class="p-2">Giá</th>
+                        <th class="p-2 cursor-pointer hover:bg-green-600 hover:text-white" data-title="price"
+                            data-order="asc">Giá <i class="fa-solid fa-sort px-2"></i></th>
                         <th class="p-2">Màn hình</th>
                         <th class="p-2">Camera sau</th>
                         <th class="p-2">Camera trước</th>
@@ -316,12 +357,6 @@
 
     <!-- Lodash -->
     <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
-
-    <!-- Model -->
-    <script src="../models/DienThoai.JS"></script>
-
-    <!-- My Library -->
-    <script src="../util/method.js"></script>
 
     <!-- Axios -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.min.js"

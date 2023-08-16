@@ -1,6 +1,6 @@
-function stringToSlug(title) {
+export function stringToSlug(title) {
   //Đổi chữ hoa thành chữ thường
-  slug = title.toLowerCase();
+  let slug = title.toLowerCase();
 
   //Đổi ký tự có dấu thành không dấu
   slug = slug.replace(/á|à|ả|ạ|ã|ă|ắ|ằ|ẳ|ẵ|ặ|â|ấ|ầ|ẩ|ẫ|ậ/gi, "a");
@@ -30,9 +30,9 @@ function stringToSlug(title) {
   return slug;
 }
 
-var validation = {
+export let validation = {
   isUrl: function (str, name, content) {
-    var regexUrl = `^(http(s):\/\/.)[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)$`;
+    var regexUrl = /^(http(s)?|ftp):\/\/[^\s/$.?#].[^\s]*$/;
     if (regexUrl.test(str)) {
       document.querySelector(`#${name}`).style.display = "none";
       document.querySelector(`#${name}`).innerHTML = "";
@@ -40,7 +40,7 @@ var validation = {
     }
     document.querySelector(`#${name}`).style.display = "block";
     document.querySelector(`#${name}`).innerHTML =
-      content + " không được bỏ trống và đúng định dạng URL ảnh !";
+      content + " không được bỏ trống và đúng định dạng!";
     return false;
   },
   isEmpty: function (value, name, content) {
@@ -65,13 +65,25 @@ var validation = {
     }
     document.querySelector(`#${name}`).style.display = "block";
     document.querySelector(`#${name}`).innerHTML =
-      content + " không được bỏ trống và tất cả phải là chữ !";
+      content + " không được bỏ trống, chỉ ghi chữ!";
+    return false;
+  },
+  isContainLetterAndNumber: function (value, name, content) {
+    var regexLetterAndNum = /^[A-Z a-z 0-9]+$/;
+    if (regexLetterAndNum.test(value)) {
+      document.querySelector(`#${name}`).style.display = "none";
+      document.querySelector(`#${name}`).innerHTML = "";
+      return true;
+    }
+    document.querySelector(`#${name}`).style.display = "block";
+    document.querySelector(`#${name}`).innerHTML =
+      content + " không được bỏ trống, chỉ ghi chữ hoặc số!";
     return false;
   },
 
   isEmailValid: function (value, name, content) {
     var regexEmail =
-      /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+      /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/;
     if (regexEmail.test(value)) {
       document.querySelector(`#${name}`).style.display = "none";
       document.querySelector(`#${name}`).innerHTML = "";
@@ -79,7 +91,7 @@ var validation = {
     }
     document.querySelector(`#${name}`).style.display = "block";
     document.querySelector(`#${name}`).innerHTML =
-      content + " không được bỏ trống và đúng định dạng !";
+      content + " không được bỏ trống và đúng định dạng!";
     return false;
   },
 
@@ -98,14 +110,17 @@ var validation = {
     return false;
   },
 
-  isNumberValid: function (value, name) {
+  isNumber: function (value, name, content) {
     var regexNumber = /^[0-9]+$/;
     if (regexNumber.test(value)) {
-      document.querySelector(`[data-error-regexNumber=${name}]`).innerHTML = "";
+      document.querySelector(`#${name}`).style.display = "none";
+      document.querySelector(`#${name}`).innerHTML = "";
       return true;
     }
-    document.querySelector(`[data-error-regexNumber=${name}]`).innerHTML =
-      name + " tất cả phải là số";
+
+    document.querySelector(`#${name}`).style.display = "block";
+    document.querySelector(`#${name}`).innerHTML =
+      content + " không được bỏ trống, chỉ ghi số!";
     return false;
   },
 
@@ -225,14 +240,14 @@ var validation = {
 };
 
 // phương thức lưu dữ liệu vào localStorage
-function saveStorageArr(arr) {
+export function saveStorageArr(arr) {
   var strArr = JSON.stringify(arr);
 
   localStorage.setItem("arr", strArr);
 }
 
 // phương thức lấy dữ liệu từ localStorage
-function getStorageJSON(name) {
+export function getStorageJSON(name) {
   if (localStorage.getItem(name)) {
     var str = localStorage.getItem(name);
     var jsonValue = JSON.parse(str);
@@ -243,7 +258,7 @@ function getStorageJSON(name) {
 }
 
 // kiểm tra và gọi dữ liệu đã lưu trong storage
-function getDataStorage() {
+export function getDataStorage() {
   if (getStorageJSON("arr")) {
     arrNhanVien = getStorageJSON("arr");
     renderTableNhanVien(arrNhanVien);
@@ -254,7 +269,7 @@ function getDataStorage() {
  * @param {*} arrstrings mảng chứa nhiều chuỗi bên trong
  * @returns chuỗi xuất hiện nhiều nhất trong hàm
  */
-function findMostCommonString(arrstrings) {
+export function findMostCommonString(arrstrings) {
   var chuoiXuatHienNhieuNhat = "";
   var tanSuatMax = 0;
   for (var index = 0; index < arrstrings.length; index++) {
@@ -277,7 +292,7 @@ function findMostCommonString(arrstrings) {
  * @param {*} prop thuộc tính cần lấy giá trị
  * @returns
  */
-function getValue(obj, prop) {
+export function getValue(obj, prop) {
   if (obj.hasOwnProperty(prop)) {
     return obj[prop];
   } else if (prop.includes(".")) {
@@ -296,7 +311,7 @@ function getValue(obj, prop) {
  * @param {*} array 1 chuỗi chứa các số
  * @returns vị trí và giá trị min, max trong chuỗi
  */
-function findHighestAndLowest(array) {
+export function findHighestAndLowest(array) {
   var indexMax = 0;
   var valueMax = array[0];
   var indexMin = 0;
@@ -321,7 +336,7 @@ function findHighestAndLowest(array) {
  * @param {*} str chuỗi
  * @returns đảo ngược của chuỗi
  */
-function recursiveReverse(str) {
+export function recursiveReverse(str) {
   return str.split("").reverse().join("");
 }
 
@@ -330,7 +345,7 @@ function recursiveReverse(str) {
  * @param {*} str
  * @returns
  */
-function longestSubstr(str) {
+export function longestSubstr(str) {
   var longest = "";
   var current = "";
 
@@ -355,7 +370,7 @@ function longestSubstr(str) {
  * @param {*} e
  * @returns
  */
-function powerOfNumber(b, e) {
+export function powerOfNumber(b, e) {
   var result = 1;
   for (var i = 0; i < e; i++) {
     result *= b;
@@ -368,7 +383,7 @@ function powerOfNumber(b, e) {
  * @param {*} n
  * @returns
  */
-function factorial(n) {
+export function factorial(n) {
   var giaiThua = 1;
   for (var i = 1; i <= n; i++) {
     giaiThua *= i;
@@ -381,7 +396,7 @@ function factorial(n) {
  * @param {*} n
  * @returns
  */
-function sumWithRecursion(n) {
+export function sumWithRecursion(n) {
   var sum = 0;
   for (var i = 1; i <= n; i++) {
     sum += i;
@@ -394,7 +409,7 @@ function sumWithRecursion(n) {
  * @param {*} string
  * @returns
  */
-function upperCase(string) {
+export function upperCase(string) {
   var words = string.split(" ");
   words = words.map((w) => w.charAt(0).toUpperCase() + w.slice(1));
   return words.join(" ");
