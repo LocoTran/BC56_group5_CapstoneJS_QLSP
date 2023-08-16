@@ -2,14 +2,14 @@
 /**
  * Import hàm từ các file khác
  */
-import productServ from "../service/service.js";
+import productServ from "../service/serviceAdmin.js";
 import {
   getDataForm,
   onConfirm,
   onSuccess,
   renderProductList,
   showDataForm,
-} from "../controllers/controller.js";
+} from "./controllerAdmin.js";
 import { stringToSlug, validation } from "../util/method.js";
 
 //////////////////// Render danh sách product ////////////////////
