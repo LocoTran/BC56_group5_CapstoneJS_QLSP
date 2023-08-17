@@ -1,4 +1,5 @@
 // render dienthoai
+const totalItemInCart = document.querySelector("#cartCount");
 function DanhSachSanPham(products) {
   document.querySelector("#productList").innerHTML = products
     .map((product) => {
@@ -24,9 +25,44 @@ function DanhSachSanPham(products) {
                       <i class="fa fa-star text-yellow-400" aria-hidden="true"></i>
                       <i class="fa fa-star" aria-hidden="true"></i>
             </div>
-            <button class="btnAdd"><i class="fa-solid fa-cart-shopping"></i>Add to cart</button>
+            <button onclick="addToCart(${product.id}" class="btnAdd"><i class="fa-solid fa-cart-shopping"></i>Add to cart</button>
         </div>
         `;
     })
     .join(" ");
+}
+// cart array
+let cart = JSON.parse(localStorage.getItem("CART")) || [];
+updateCart();
+
+// add to cart
+function addToCart(id) {
+  // kiểm tra xem sản phẩm đã có trong giỏ hàng chưa
+  if (cart.some((item) => item.id === id)) {
+    // changeNumberOfUnits("plus", id);
+  } else {
+    const item = Product.find((Product) => Product.id === id);
+    cart.push({
+      ...item,
+      numberOfUnits: 1,
+    });
+  }
+  updateCart();
+}
+// update cart
+function updateCart() {
+  // renderCartItem();
+  renderSubtotal();
+  // lưu vào local storage
+  localStorage.setItem("CART", JSON.stringify(cart));
+}
+// tính tiền và hiển thị
+function renderSubtotal() {
+  let totalPrice = 0,
+    totalItems = 0;
+  cart.forEach((item) => {
+    totalPrice += item.price * item.numberOfUnits;
+    totalItems += item.numberOfUnits;
+  });
+  totalItemInCart.innerHTML = totalItems;
 }

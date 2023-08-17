@@ -1,4 +1,4 @@
-function DienThoai() {
+function Product() {
   (this.id = 0),
     (this.name = ""),
     (this.price = 0),
