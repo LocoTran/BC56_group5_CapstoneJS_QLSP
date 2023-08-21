@@ -42,7 +42,7 @@
       <div
         class="container flex flex-wrap items-center justify-between mx-auto py-4"
       >
-        <a href="" class="flex items-center logo">
+        <a href="./index.html" class="flex items-center logo">
           <img
             src="https://flowbite.com/docs/images/logo.svg"
             class="h-8 mr-3"
@@ -137,8 +137,14 @@
     </nav>
     <section class="carts py-20">
       <div class="container">
+        <div class="mt-5 mb-4 text-center mb-10">
+          <h2 class="font-bold text-2xl" id="totalBill">Tổng Tiền: $0</h2>
+
+          <button class="thanhToanBill bg-green-800 text-white rounded p-2" >Thanh Toán</button>
+          <button onclick="xoaGioHang()" class="removeAll text-white bg-red-600 rounded p-2" >Xóa giỏ hàng</button>
+        </div>
         <div id="label" class="text-center"></div>
-        <div class="shopping-cart" id="shopping-cart"></div>
+        <!-- <div class="shopping-cart" id="shopping-cart"></div> -->
       </div>
     </section>
 
