@@ -85,41 +85,45 @@ for (let i = 0; i < cart.length; i++) {
       //res.data
       let cartPro = res.data;
       let divString = `
-      <div class="shopping-cart grid gap-4 justify-center	">
-          <div class="cart-item flex border-solid border-2 border-black m-6">
-            <img class="w-40" src=${cartPro.img} alt="" />
-          <div class="details flex flex-col p-3 gap-3">
-              <div class="title-price-x w-48 flex items-center justify-between">
-                  <h4 class="title-price flex items-center gap-3 ">
-                    <p>${cartPro.name}</p>
-                    <p class="cart-item-price bg-black text-white rounded-md py-1 px-2">$ ${
-                      cartPro.price
-                    }</p>
-                  </h4>
-                  <i onclick="removeItem(${
-                    cartPro.id
-                  })" class="bi bi-x-lg font-bold text-red-600 cursor-pointer"></i>
-              </div>
-                  <div class="buttons flex flex-row gap-2 text-base ">
-                  <i onclick="giam(${
-                    cartPro.id
-                  })" class="bi bi-dash-lg text-red-600 cursor-pointer"></i>
-                  <div id="${cartPro.id}" class="quantity">${
-        cart[i].quantity
-      }</div>
-                  <i onclick="tang(${
-                    cartPro.id
-                  })" class="bi bi-plus-lg text-green-600 cursor-pointer"></i>
+      <div class="shopping-cart grid gap-4 justify-center">
+        <div class="cart-item flex border border-solid border-black m-6 p-3">
+          <img class="w-40" src=${cartPro.img} alt="" />
+          <div class="details flex flex-col ml-4">
+            <div class="title-price-x w-48 flex items-center justify-between">
+              <h4 class="title-price flex items-center gap-3 ">
+                <p>${cartPro.name}</p>
+                <p class="cart-item-price bg-black text-white rounded-md py-1 px-2">${cartPro.price.toLocaleString(
+                  "en-US",
+                  {
+                    style: "currency",
+                    currency: "USD",
+                  }
+                )}</p>
+              </h4>
+              <i onclick="removeItem(${
+                cartPro.id
+              })" class="bi bi-x-lg font-bold text-red-600 cursor-pointer"></i>
+            </div>
+            <div class="buttons flex flex-row gap-2 text-base items-center">
+              <i onclick="giam(${
+                cartPro.id
+              })" class="bi bi-dash-lg text-red-600 cursor-pointer"></i>
+              <div id="${cartPro.id}" class="quantity">${cart[i].quantity}</div>
+              <i onclick="tang(${
+                cartPro.id
+              })" class="bi bi-plus-lg text-green-600 cursor-pointer"></i>
+            </div>
+            <h3 class="text-lg mt-2">${(
+              cart[i].quantity * cartPro.price
+            ).toLocaleString("en-US", {
+              style: "currency",
+              currency: "USD",
+            })}</h3>
           </div>
-          <h3>${(cart[i].quantity * cartPro.price).toLocaleString("en-US", {
-            style: "currency",
-            currency: "USD",
-          })}</h3>
-
-          </div>
-          </div>
+        </div>
       </div>
-      `;
+    `;
+
       contentHTML += divString;
       label.innerHTML = contentHTML;
     })
