@@ -113,9 +113,7 @@ for (let i = 0; i < cart.length; i++) {
                 cartPro.id
               })" class="bi bi-plus-lg text-green-600 cursor-pointer"></i>
             </div>
-            <h3 class="text-lg mt-2">${(
-              cart[i].quantity * cartPro.price
-            ).toLocaleString("en-US", {
+            <h3 class="text-lg mt-2">${cartPro.price.toLocaleString("en-US", {
               style: "currency",
               currency: "USD",
             })}</h3>
@@ -160,7 +158,6 @@ function tang(productId) {
   updateCartItemQuantity(productId, currentQuantity + 1);
   updateQuantity(); // Cập nhật số lượng tổng hiển thị
   calculateTotalBill();
-  refreshPage();
 }
 
 //hàm giảm số lượng
@@ -173,7 +170,6 @@ function giam(productId) {
     updateCartItemQuantity(productId, currentQuantity - 1);
     updateQuantity(); // Cập nhật số lượng tổng hiển thị
     calculateTotalBill();
-    refreshPage();
   }
 }
 
@@ -184,9 +180,6 @@ window.onload = function () {
 };
 // Làm mới trang để thể hiện giỏ hàng đã được cập nhật
 
-function refreshPage() {
-  location.reload();
-}
 // /////////////////////
 // Hàm để tính tổng tiền của các sản phẩm trong giỏ hàng
 function calculateTotalBill() {
@@ -215,7 +208,9 @@ function updateTotalBill(totalBill) {
     { style: "currency", currency: "USD" }
   )}`;
 }
-
+function refreshPage() {
+  location.reload();
+}
 // Gọi hàm tính tổng tiền khi trang đã tải xong
 window.onload = function () {
   calculateTotalBill();
