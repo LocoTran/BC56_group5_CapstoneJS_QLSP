@@ -8,8 +8,6 @@ function fetchProductList() {
   })
     .then((res) => {
       DanhSachSanPham(res.data);
-      // Product = res.data;
-      // taoGioHang();
     })
     .catch((err) => {
       console.log(err);
