@@ -1,10 +1,10 @@
 const api = `https://64cde6de0c01d81da3ee5a2f.mockapi.io/phones`;
 
 let label = document.querySelector("#label");
-// let shoppingCart = document.querySelector("#shopping-cart");
 let gioHang = JSON.parse(localStorage.getItem("CART")) || [];
 console.log(gioHang);
 let contentHTML = "";
+// let shoppingCart = document.querySelector("#shopping-cart");
 
 // for (let i = 0; i < gioHang.length; i++) {
 //   axios({

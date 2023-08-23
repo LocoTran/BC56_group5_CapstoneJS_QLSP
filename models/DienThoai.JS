@@ -8,4 +8,3 @@ function Product() {
     (this.desc = ""),
     (this.type = "");
 }
-

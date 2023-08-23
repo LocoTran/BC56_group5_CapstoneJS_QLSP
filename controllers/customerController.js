@@ -1,6 +1,4 @@
 // render dienthoai
-// const api = `https://64cde6de0c01d81da3ee5a2f.mockapi.io/phones`;
-
 const totalItemInCart = document.querySelector("#cartCount");
 function DanhSachSanPham(products) {
   document.querySelector("#productList").innerHTML = products
@@ -60,10 +58,7 @@ function updateCart() {
 
 // Cập nhật số lượng sản phẩm trong giỏ hàng và giao diện
 function updateQuantity() {
-  let quantity = 0;
-  for (const item of cart) {
-    quantity += item.quantity;
-  }
+  const quantity = cart.reduce((total, item) => total + item.quantity, 0);
   totalItemInCart.innerHTML = quantity;
 }
 
@@ -153,15 +148,9 @@ function xoaGioHang() {
 }
 // Hàm để loại bỏ một sản phẩm khỏi giỏ hàng
 function removeItem(productId) {
-  //  Tìm ID của sản phẩm trong mảng giỏ hàng
-  const itemIndex = cart.findIndex((item) => item.id === productId);
-
-  if (itemIndex !== -1) {
-    // Loại bỏ sản phẩm khỏi mảng giỏ hàng
-    cart.splice(itemIndex, 1);
-    updateCart();
-    refreshPage();
-  }
+  cart = cart.filter((item) => item.id !== productId);
+  updateCart();
+  refreshPage();
 }
 
 //hàm tăng số lượng
