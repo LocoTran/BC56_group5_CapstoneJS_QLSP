@@ -214,6 +214,7 @@ window.resetAdd = () => {
  * Tìm kiếm dựa trên tên sản phẩm khi người dùng nhập vào ô tìm kiểm
  */
 document.getElementById("searchByName").oninput = function () {
+  offLoading();
   let keyword = stringToSlug(document.getElementById("searchByName").value);
   let arrResult = [];
   if (keyword == "") {
@@ -244,6 +245,7 @@ let arrTh = document.querySelectorAll("th[data-title]");
 
 for (let i = 0; i < arrTh.length; i++) {
   arrTh[i].onclick = function (event) {
+    onLoading();
     let tenThuocTinh = event.target.getAttribute("data-title");
     let order = event.target.getAttribute("data-order");
 
@@ -252,20 +254,22 @@ for (let i = 0; i < arrTh.length; i++) {
       .then((res) => {
         res.data = _.orderBy(res.data, [tenThuocTinh], [order]);
         renderProductList(res.data);
+        offLoading();
       })
       .catch((err) => {
+        offLoading();
         console.log("🚀👾👽 ~ err:", err);
       });
 
     if (order == "asc") {
       event.target.setAttribute("data-order", "desc");
-      event.target
-        .querySelector("i")
+      document
+        .querySelector("#priceSort")
         .setAttribute("class", "fa-solid fa-arrow-up-wide-short");
     } else {
       event.target.setAttribute("data-order", "asc");
-      event.target
-        .querySelector("i")
+      document
+        .querySelector("#priceSort")
         .setAttribute("class", "fa-solid fa-arrow-down-short-wide");
     }
   };
