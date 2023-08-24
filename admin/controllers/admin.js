@@ -5,7 +5,9 @@
 import productServ from "../service/serviceAdmin.js";
 import {
   getDataForm,
+  offLoading,
   onConfirm,
+  onLoading,
   onSuccess,
   renderProductList,
   showDataForm,
@@ -17,12 +19,15 @@ import { stringToSlug, validation } from "../util/method.js";
  * in ra table danh sách product có trong mock api
  */
 let fetchProduct = () => {
+  onLoading();
   productServ
     .getList()
     .then((res) => {
       renderProductList(res.data);
+      offLoading();
     })
     .catch((err) => {
+      offLoading();
       console.log("🚀👾👽 ~ err:", err);
     });
 };
@@ -34,17 +39,22 @@ fetchProduct();
  * @param {*} id truyền vào hàm 1 id để xóa chính xác sản phầm đó
  */
 window.deleteProduct = (id) => {
-  onConfirm("xóa sản phẩm").then((res) => {
+  onLoading();
+  onConfirm(`xóa sản phẩm ID ${id}`).then((res) => {
     if (res) {
       productServ
         .deleteProduct(id)
         .then((res) => {
           fetchProduct();
           onSuccess("Xóa sản phẩm thành công");
+          offLoading();
         })
         .catch((err) => {
+          offLoading();
           console.log("🚀👾👽 ~ err:", err);
         });
+    } else {
+      offLoading();
     }
   });
 };
@@ -92,6 +102,7 @@ window.addProduct = () => {
     return;
   }
 
+  onLoading();
   // Add to API and render then show alert
   productServ
     .addProduct(product)
@@ -99,8 +110,10 @@ window.addProduct = () => {
       document.querySelector(`[data-modal-hide="exModal"]`).click();
       fetchProduct(res.data);
       onSuccess("Thêm sản phẩm thành công!");
+      offLoading();
     })
     .catch((err) => {
+      offLoading();
       console.log("🚀👾👽 ~ err:", err);
     });
 };
@@ -111,13 +124,16 @@ window.addProduct = () => {
  * @param {*} id truyền id của product cần chỉnh sửa rồi show thông tin lên form edit
  */
 window.editProduct = (id) => {
+  onLoading();
   document.querySelector(`[data-modal-toggle="editModal"]`).click();
   productServ
     .getDetail(id)
     .then((res) => {
       showDataForm(res.data);
+      offLoading();
     })
     .catch((err) => {
+      offLoading();
       console.log("🚀👾👽 ~ err:", err);
     });
 };
@@ -166,6 +182,7 @@ window.updateProduct = () => {
     return;
   }
 
+  onLoading();
   // Update Product with ID and new Data then render to table
   productServ
     .updateProduct(updPro.id, updPro)
@@ -173,8 +190,10 @@ window.updateProduct = () => {
       document.querySelector(`[data-modal-hide="editModal"]`).click();
       fetchProduct();
       onSuccess("Cập nhật sản phẩm thành công!");
+      offLoading();
     })
     .catch((err) => {
+      offLoading();
       console.log("🚀👾👽 ~ err:", err);
     });
 };
