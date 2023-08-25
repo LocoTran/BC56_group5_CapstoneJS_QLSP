@@ -61,6 +61,14 @@ async function getProductInfoById(id) {
   }
 }
 //////////////////////////////////////////////////////
+//sweet alert
+let sanPhamTrung = (message) => {
+  Swal.fire(message);
+};
+let onModalSuccess = (message) => {
+  Swal.fire(message, "", "success");
+};
+//////////////////////////////////////////////////////
 // giỏ hàng
 let cart = JSON.parse(localStorage.getItem("CART")) || [];
 updateQuantity();
@@ -70,9 +78,7 @@ window.addToCart = addToCart;
 async function addToCart(id) {
   if (isProductInCart(id)) {
     // Sản phẩm đã tồn tại trong giỏ hàng, không thêm mới
-    alert(
-      "Sản phẩm đã có trong giỏ hàng. Hãy vào giỏ hàng để tăng giảm số lượng"
-    );
+    sanPhamTrung("Sản Phẩm Đã Có Trong Giỏ Hàng. Vui Lòng Chọn Sản Phấm Khác!");
     return;
   }
 
@@ -83,6 +89,7 @@ async function addToCart(id) {
       quantity: 1,
       price: productInfo.price,
     });
+    onModalSuccess("Đã Thêm vào giỏ hàng!");
   }
 
   updateQuantity();
@@ -185,15 +192,24 @@ renderCart();
 function xoaGioHang() {
   // Xóa toàn bộ nội dung của giỏ hàng
   cart = [];
+  onModalSuccess("Đã Xóa Tất Cả Sản Phẩm!");
   updateCart();
-  refreshPage();
+  // refreshPage();
+  setTimeout(function () {
+    location.reload();
+  }, 3000);
 }
 //////////////////////////////////////////////////////
 // function để loại bỏ một sản phẩm khỏi giỏ hàng
 function removeItem(productId) {
   cart = cart.filter((item) => item.id !== productId);
+  onModalSuccess("Đã Xóa Sản Phẩm!");
+
   updateCart();
-  refreshPage();
+  // Chờ 3 giây trước khi làm mới trang
+  setTimeout(function () {
+    location.reload();
+  }, 3000); // 3000 mili giây tương đương 3 giây
 }
 //////////////////////////////////////////////////////
 // Kiểm tra sản phẩm đã có trong giỏ hàng chưa
