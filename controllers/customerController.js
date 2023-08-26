@@ -197,7 +197,7 @@ function xoaGioHang() {
   // refreshPage();
   setTimeout(function () {
     location.reload();
-  }, 3000);
+  }, 1500);
 }
 //////////////////////////////////////////////////////
 // function để loại bỏ một sản phẩm khỏi giỏ hàng
