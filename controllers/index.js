@@ -5,13 +5,11 @@ function fetchProductList() {
     url: api,
     method: "GET",
   })
-    .then(function (res) {
-      console.log("🚀 ~ file: main.js:7 ~ res:", res);
+    .then((res) => {
       DanhSachSanPham(res.data);
     })
-    .catch(function (err) {
-      console.log("🚀 ~ file: main.js:12 ~ err:", err);
+    .catch((err) => {
+      console.log(err);
     });
 }
 fetchProductList();
-
