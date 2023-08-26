@@ -158,4 +158,16 @@ nav #navbar-sticky a.active {
   nav #navbar-sticky a.active {
     color: rgb(59, 130, 246);
   }
+}
+#spinner {
+  background-color: rgba(0, 0, 0, 0.7);
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }/*# sourceMappingURL=admin.css.map */

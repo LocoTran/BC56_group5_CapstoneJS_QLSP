@@ -32,7 +32,7 @@ export function stringToSlug(title) {
 
 export let validation = {
   isUrl: function (str, name, content) {
-    var regexUrl = /^(http(s)?|ftp):\/\/[^\s/$.?#].[^\s]*$/;
+    let regexUrl = /^(http(s)?|ftp):\/\/[^\s/$.?#].[^\s]*$/;
     if (regexUrl.test(str)) {
       document.querySelector(`#${name}`).style.display = "none";
       document.querySelector(`#${name}`).innerHTML = "";
@@ -57,19 +57,22 @@ export let validation = {
   },
 
   isLetter: function (value, name, content) {
-    var regexLetter = /^[A-Z a-z]+$/;
-    if (regexLetter.test(value)) {
+    let slugValue = stringToSlug(value);
+
+    // kiểm tra từ có chữ cái, khoảng trắng hoặc '-'
+    let regexLetter = /^[A-Z a-z\s'-]+$/;
+    if (regexLetter.test(slugValue)) {
       document.querySelector(`#${name}`).style.display = "none";
       document.querySelector(`#${name}`).innerHTML = "";
       return true;
     }
     document.querySelector(`#${name}`).style.display = "block";
     document.querySelector(`#${name}`).innerHTML =
-      content + " không được bỏ trống, chỉ ghi chữ!";
+      content + " không được bỏ trống và chỉ ghi chữ!";
     return false;
   },
   isContainLetterAndNumber: function (value, name, content) {
-    var regexLetterAndNum = /^[A-Z a-z 0-9]+$/;
+    let regexLetterAndNum = /^[A-Z a-z 0-9]+$/;
     if (regexLetterAndNum.test(value)) {
       document.querySelector(`#${name}`).style.display = "none";
       document.querySelector(`#${name}`).innerHTML = "";
@@ -77,12 +80,12 @@ export let validation = {
     }
     document.querySelector(`#${name}`).style.display = "block";
     document.querySelector(`#${name}`).innerHTML =
-      content + " không được bỏ trống, chỉ ghi chữ hoặc số!";
+      content + " không được bỏ trống và chỉ ghi chữ hoặc số!";
     return false;
   },
 
   isEmailValid: function (value, name, content) {
-    var regexEmail =
+    let regexEmail =
       /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/;
     if (regexEmail.test(value)) {
       document.querySelector(`#${name}`).style.display = "none";
@@ -97,7 +100,7 @@ export let validation = {
 
   isNumberAndValueValid: function (value, name, content, minValue, maxValue) {
     value = Number(value);
-    var regexNumber = /^[0-9]+$/;
+    let regexNumber = /^[0-9]+$/;
     if (regexNumber.test(value) && value >= minValue && value <= maxValue) {
       document.querySelector(`#${name}`).style.display = "none";
       document.querySelector(`#${name}`).innerHTML = "";
@@ -111,7 +114,7 @@ export let validation = {
   },
 
   isNumber: function (value, name, content) {
-    var regexNumber = /^[0-9]+$/;
+    let regexNumber = /^[0-9]+$/;
     if (regexNumber.test(value)) {
       document.querySelector(`#${name}`).style.display = "none";
       document.querySelector(`#${name}`).innerHTML = "";
@@ -125,7 +128,7 @@ export let validation = {
   },
 
   isLengthValid: function (value, name, minLength, maxLength) {
-    var length = value.length;
+    let length = value.length;
     if (length < minLength || length > maxLength) {
       document.querySelector(
         `[data-error-min-max-length=${name}]`
@@ -150,7 +153,7 @@ export let validation = {
   },
 
   isPassValid: function (value, name) {
-    var regexPassword =
+    let regexPassword =
       /(?=.*\d)(?=.*[A-Z])(?=.*[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]).{6,10}/; //(?=.*[a-z])
     if (regexPassword.test(value)) {
       document.querySelector(`#${name}`).style.display = "none";
@@ -165,7 +168,7 @@ export let validation = {
   },
 
   isDateValid: function (value, name, content) {
-    var regexDate = /^(0[1-9]|1[012])\/(0[1-9]|[12][0-9]|3[01])\/\d{4}$/;
+    let regexDate = /^(0[1-9]|1[012])\/(0[1-9]|[12][0-9]|3[01])\/\d{4}$/;
     if (regexDate.test(value)) {
       document.querySelector(`#${name}`).style.display = "none";
       document.querySelector(`#${name}`).innerHTML = "";
@@ -187,10 +190,10 @@ export let validation = {
     minLength,
     maxLength
   ) {
-    var length = userID.length;
-    var regexNumber = /^[0-9]+$/;
+    let length = userID.length;
+    let regexNumber = /^[0-9]+$/;
     //test exist
-    for (var index = 0; index < arr.length; index++) {
+    for (let index = 0; index < arr.length; index++) {
       if (arr[index][prop] === userID) {
         document.querySelector(`#${name}`).style.display = "block";
         document.querySelector(
@@ -224,8 +227,8 @@ export let validation = {
     minLength,
     maxLength
   ) {
-    var length = value.length;
-    var regexNumber = /^[0-9]+$/;
+    let length = value.length;
+    let regexNumber = /^[0-9]+$/;
     if (regexNumber.test(value) && length >= minLength && length <= maxLength) {
       document.querySelector(`#${name}`).style.display = "none";
       document.querySelector(`#${name}`).innerHTML = "";
@@ -241,7 +244,7 @@ export let validation = {
 
 // phương thức lưu dữ liệu vào localStorage
 export function saveStorageArr(arr) {
-  var strArr = JSON.stringify(arr);
+  let strArr = JSON.stringify(arr);
 
   localStorage.setItem("arr", strArr);
 }
@@ -249,8 +252,8 @@ export function saveStorageArr(arr) {
 // phương thức lấy dữ liệu từ localStorage
 export function getStorageJSON(name) {
   if (localStorage.getItem(name)) {
-    var str = localStorage.getItem(name);
-    var jsonValue = JSON.parse(str);
+    let str = localStorage.getItem(name);
+    let jsonValue = JSON.parse(str);
 
     return jsonValue;
   }
@@ -270,11 +273,11 @@ export function getDataStorage() {
  * @returns chuỗi xuất hiện nhiều nhất trong hàm
  */
 export function findMostCommonString(arrstrings) {
-  var chuoiXuatHienNhieuNhat = "";
-  var tanSuatMax = 0;
-  for (var index = 0; index < arrstrings.length; index++) {
-    var tuanSuat = 0;
-    for (var j = 0; j < arrstrings.length; j++) {
+  let chuoiXuatHienNhieuNhat = "";
+  let tanSuatMax = 0;
+  for (let index = 0; index < arrstrings.length; index++) {
+    let tuanSuat = 0;
+    for (let j = 0; j < arrstrings.length; j++) {
       if (arrstrings[j] == arrstrings[index]) {
         tuanSuat++;
       }
@@ -312,12 +315,12 @@ export function getValue(obj, prop) {
  * @returns vị trí và giá trị min, max trong chuỗi
  */
 export function findHighestAndLowest(array) {
-  var indexMax = 0;
-  var valueMax = array[0];
-  var indexMin = 0;
-  var valueMin = array[0];
+  let indexMax = 0;
+  let valueMax = array[0];
+  let indexMin = 0;
+  let valueMin = array[0];
 
-  for (var i = 0; i < array.length; i++) {
+  for (let i = 0; i < array.length; i++) {
     if (array[i] > valueMax) {
       valueMax = array[i];
       indexMax = i;
@@ -346,11 +349,11 @@ export function recursiveReverse(str) {
  * @returns
  */
 export function longestSubstr(str) {
-  var longest = "";
-  var current = "";
+  let longest = "";
+  let current = "";
 
-  for (var i = 0; i < str.length; i++) {
-    var char = str.charAt(i);
+  for (let i = 0; i < str.length; i++) {
+    let char = str.charAt(i);
     if (/^[0-9a-zA-Z]+$/.test(char)) {
       current += char;
       if (current.length > longest.length) {
@@ -371,8 +374,8 @@ export function longestSubstr(str) {
  * @returns
  */
 export function powerOfNumber(b, e) {
-  var result = 1;
-  for (var i = 0; i < e; i++) {
+  let result = 1;
+  for (let i = 0; i < e; i++) {
     result *= b;
   }
   return result;
@@ -384,8 +387,8 @@ export function powerOfNumber(b, e) {
  * @returns
  */
 export function factorial(n) {
-  var giaiThua = 1;
-  for (var i = 1; i <= n; i++) {
+  let giaiThua = 1;
+  for (let i = 1; i <= n; i++) {
     giaiThua *= i;
   }
   return giaiThua;
@@ -397,8 +400,8 @@ export function factorial(n) {
  * @returns
  */
 export function sumWithRecursion(n) {
-  var sum = 0;
-  for (var i = 1; i <= n; i++) {
+  let sum = 0;
+  for (let i = 1; i <= n; i++) {
     sum += i;
   }
   return sum;
@@ -410,7 +413,7 @@ export function sumWithRecursion(n) {
  * @returns
  */
 export function upperCase(string) {
-  var words = string.split(" ");
+  let words = string.split(" ");
   words = words.map((w) => w.charAt(0).toUpperCase() + w.slice(1));
   return words.join(" ");
 }

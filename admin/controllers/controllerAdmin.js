@@ -124,3 +124,11 @@ export let showDataForm = (data) => {
   document.getElementById("descUpdate").value = desc;
   document.getElementById("typeUpdate").value = type;
 };
+
+////////////////////////// Tắt/ bật loading ////////////////////////
+export let onLoading = () => {
+  document.querySelector("#spinner").style.display = "flex";
+};
+export let offLoading = () => {
+  document.querySelector("#spinner").style.display = "none";
+};
