@@ -11,31 +11,34 @@ function DanhSachSanPham(products) {
         <div class="item mr-4 p-2 mt-4">
         <img src="${product.img}" alt="">
         <div class="content">
-<div class="detail">
-    <h4 class="text-xl font-semibold py-2">${product.name}</h4>
-    <form>
-        <div>
-            <label class="block text-gray-600 text-sm font-medium mb-2" for="screen">Màn hình:</label>
-            <div class="px-3 py-1 border rounded-lg w-full bg-gray-100">${product.screen}</div>
-        </div>
-        <div>
-            <label class="block text-gray-600 text-sm font-medium mb-2" for="backCamera">Camera sau:</label>
-            <div class="px-3 py-1 border rounded-lg w-full bg-gray-100">${product.backCamera}</div>
-        </div>
-        <div>
-            <label class="block text-gray-600 text-sm font-medium mb-2" for="frontCamera">Camera trước:</label>
-            <div class="px-3 py-1 border rounded-lg w-full bg-gray-100">${product.frontCamera}</div>
-        </div>
-        <div>
-            <label class="block text-gray-600 text-sm font-medium mb-2" for="desc">Mô tả:</label>
-            <div class="px-3 py-1 border rounded-lg w-full bg-gray-100">${product.desc}</div>
-        </div>
-    </form>
-</div>
-</div>
+          <div class="detail">
+              <h4 class="text-xl font-semibold py-2">${product.name}</h4>
+              <form>
+                  <div>
+                      <label class="block text-gray-600 text-sm font-medium mb-2" for="screen">Màn hình:</label>
+                      <div class="px-3 py-1 border rounded-lg w-full bg-gray-100">${product.screen}</div>
+                  </div>
+                  <div>
+                      <label class="block text-gray-600 text-sm font-medium mb-2" for="backCamera">Camera sau:</label>
+                      <div class="px-3 py-1 border rounded-lg w-full bg-gray-100">${product.backCamera}</div>
+                  </div>
+                  <div>
+                      <label class="block text-gray-600 text-sm font-medium mb-2" for="frontCamera">Camera trước:</label>
+                      <div class="px-3 py-1 border rounded-lg w-full bg-gray-100">${product.frontCamera}</div>
+                  </div>
+                  <div>
+                      <label class="block text-gray-600 text-sm font-medium mb-2" for="desc">Mô tả:</label>
+                      <div class="px-3 py-1 border rounded-lg w-full bg-gray-100">${product.desc}</div>
+                  </div>
+                  <div class="hidden">
+                  <label class="block text-gray-600 text-sm font-medium mb-2" for="type">Loại Máy:</label>
+                  <div class="px-3 py-1 border rounded-lg w-full bg-gray-100">${product.type}</div>
+              </div>
+              </form>
+          </div>
+          </div>
 
         
-          <div class="test">
           <div class="price">
           <h4 class="text-lg font-semibold py-1">${product.price}$</h4>
         </div>
@@ -48,7 +51,6 @@ function DanhSachSanPham(products) {
         </div>
         <button onclick="addToCart(${product.id})" class="btnAdd"><i class="fa-solid fa-cart-shopping"></i>Add to cart</button>
           </div>
-              </div>
           
           `;
       })
@@ -74,7 +76,7 @@ async function getProductInfoById(id) {
       productInfoCache[id] = productInfo; // Lưu thông tin vào cache
       return productInfo;
     } catch (error) {
-      console.error(error);
+      // console.error(error);
       return null;
     }
   }
@@ -87,11 +89,12 @@ let sanPhamTrung = (message) => {
 let onModalSuccess = (message) => {
   Swal.fire(message, "", "success");
 };
+
 //////////////////////////////////////////////////////
 // giỏ hàng
 let cart = JSON.parse(localStorage.getItem("CART")) || [];
 updateQuantity();
-
+//////////////////////////////////////////////////////
 // add to cart
 window.addToCart = addToCart;
 async function addToCart(id) {
