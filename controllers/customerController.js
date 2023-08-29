@@ -8,29 +8,50 @@ function DanhSachSanPham(products) {
     productList.innerHTML = products
       .map((product) => {
         return `
-          <div class="item mr-4 p-2 mt-4">
-            <img src="${product.img}" alt="">
-              <div class="content">
-                  <div class="detail">
-                    <h4 class="text-xl font-semibold py-2">${product.name}</h4>
-                    <p><span>${product.screen}</span></p>
-                    <p>Camera sau: <span>${product.backCamera}</span></p>
-                    <p>Camera trước: <span>${product.frontCamera}</span></p>
-                    <p>${product.desc}</p>
+        <div class="item mr-4 p-2 mt-4">
+        <img src="${product.img}" alt="">
+        <div class="content">
+          <div class="detail">
+              <h4 class="text-xl font-semibold py-2">${product.name}</h4>
+              <form>
+                  <div>
+                      <label class="block text-gray-600 text-sm font-medium mb-2" for="screen">Màn hình:</label>
+                      <div class="px-3 py-1 border rounded-lg w-full bg-gray-100">${product.screen}</div>
                   </div>
+                  <div>
+                      <label class="block text-gray-600 text-sm font-medium mb-2" for="backCamera">Camera sau:</label>
+                      <div class="px-3 py-1 border rounded-lg w-full bg-gray-100">${product.backCamera}</div>
+                  </div>
+                  <div>
+                      <label class="block text-gray-600 text-sm font-medium mb-2" for="frontCamera">Camera trước:</label>
+                      <div class="px-3 py-1 border rounded-lg w-full bg-gray-100">${product.frontCamera}</div>
+                  </div>
+                  <div>
+                      <label class="block text-gray-600 text-sm font-medium mb-2" for="desc">Mô tả:</label>
+                      <div class="px-3 py-1 border rounded-lg w-full bg-gray-100">${product.desc}</div>
+                  </div>
+                  <div class="hidden">
+                  <label class="block text-gray-600 text-sm font-medium mb-2" for="type">Loại Máy:</label>
+                  <div class="px-3 py-1 border rounded-lg w-full bg-gray-100">${product.type}</div>
               </div>
-              <div class="price">
-                <h4 class="text-lg font-semibold py-1">${product.price}$</h4>
-              </div>
-              <div>
-                <i class="fa fa-star text-yellow-400" aria-hidden="true"></i>
-                        <i class="fa fa-star text-yellow-400" aria-hidden="true"></i>
-                        <i class="fa fa-star text-yellow-400" aria-hidden="true"></i>
-                        <i class="fa fa-star text-yellow-400" aria-hidden="true"></i>
-                        <i class="fa fa-star" aria-hidden="true"></i>
-              </div>
-              <button onclick="addToCart(${product.id})" class="btnAdd"><i class="fa-solid fa-cart-shopping"></i>Add to cart</button>
+              </form>
           </div>
+          </div>
+
+        
+          <div class="price">
+          <h4 class="text-lg font-semibold py-1">${product.price}$</h4>
+        </div>
+        <div>
+          <i class="fa fa-star text-yellow-400" aria-hidden="true"></i>
+                  <i class="fa fa-star text-yellow-400" aria-hidden="true"></i>
+                  <i class="fa fa-star text-yellow-400" aria-hidden="true"></i>
+                  <i class="fa fa-star text-yellow-400" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+        </div>
+        <button onclick="addToCart(${product.id})" class="btnAdd"><i class="fa-solid fa-cart-shopping"></i>Add to cart</button>
+          </div>
+          
           `;
       })
       .join(" ");
@@ -55,7 +76,7 @@ async function getProductInfoById(id) {
       productInfoCache[id] = productInfo; // Lưu thông tin vào cache
       return productInfo;
     } catch (error) {
-      console.error(error);
+      // console.error(error);
       return null;
     }
   }
@@ -68,11 +89,12 @@ let sanPhamTrung = (message) => {
 let onModalSuccess = (message) => {
   Swal.fire(message, "", "success");
 };
+
 //////////////////////////////////////////////////////
 // giỏ hàng
 let cart = JSON.parse(localStorage.getItem("CART")) || [];
 updateQuantity();
-
+//////////////////////////////////////////////////////
 // add to cart
 window.addToCart = addToCart;
 async function addToCart(id) {
@@ -197,7 +219,7 @@ function xoaGioHang() {
   // refreshPage();
   setTimeout(function () {
     location.reload();
-  }, 3000);
+  }, 1000);
 }
 //////////////////////////////////////////////////////
 // function để loại bỏ một sản phẩm khỏi giỏ hàng
@@ -206,10 +228,10 @@ function removeItem(productId) {
   onModalSuccess("Đã Xóa Sản Phẩm!");
 
   updateCart();
-  // Chờ 3 giây trước khi làm mới trang
+  // Chờ 1 giây trước khi làm mới trang
   setTimeout(function () {
     location.reload();
-  }, 3000); // 3000 mili giây tương đương 3 giây
+  }, 1000); // 1000 mili giây tương đương 1 giây
 }
 //////////////////////////////////////////////////////
 // Kiểm tra sản phẩm đã có trong giỏ hàng chưa
