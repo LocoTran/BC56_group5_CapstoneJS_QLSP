@@ -75,7 +75,20 @@
 
   <section class="products py-20 w-full">
     <div class="container">
-      <div class="title text-2xl text-center font-bold">- Products -</div>
+      <div class="title text-2xl text-center font-bold">- Products -
+      </div>
+      <div class="text-right">
+        <span></span>
+        <div class="form-group">
+          <label for=""><i class="fa fa-filter p-2 text-cyan-300"></i></label>
+          <select class="form-control rounded-xl bg-cyan-300 text-black p-2" name="" id="select-type">
+            <option value="all">Chọn Loại Sản Phẩm</option>
+            <option value="iphone">Apple</option>
+            <option value="samsung">SamSung</option>
+          </select>
+        </div>
+      </div>
+
       <div class="list grid grid-cols-4 text-center" id="productList">
         <!-- item -->
         <!-- <div class="item mr-4 p-2 mt-4">
