@@ -98,6 +98,7 @@ updateQuantity();
 // add to cart
 window.addToCart = addToCart;
 // add to cart
+// add to cart
 async function addToCart(id) {
   const cartItem = cart.find((item) => item.id === id);
 
@@ -213,6 +214,18 @@ async function renderCart() {
 // Gọi function để render giỏ hàng
 renderCart();
 
+//////////////////////////////////////////////////////
+// thanh toán bill
+function thanhToanBill() {
+  // Xóa toàn bộ nội dung của giỏ hàng
+  cart = [];
+  onModalSuccess("Đã Thanh Toán!");
+  updateCart();
+  // refreshPage();
+  setTimeout(function () {
+    location.reload();
+  }, 1000);
+}
 //////////////////////////////////////////////////////
 // xóa giỏ hàng
 function xoaGioHang() {
