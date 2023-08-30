@@ -97,27 +97,31 @@ updateQuantity();
 //////////////////////////////////////////////////////
 // add to cart
 window.addToCart = addToCart;
+// add to cart
 async function addToCart(id) {
-  if (isProductInCart(id)) {
-    // Sản phẩm đã tồn tại trong giỏ hàng, không thêm mới
-    sanPhamTrung("Sản Phẩm Đã Có Trong Giỏ Hàng. Vui Lòng Chọn Sản Phấm Khác!");
-    return;
-  }
+  const cartItem = cart.find((item) => item.id === id);
 
-  const productInfo = await getProductInfoById(id);
-  if (productInfo) {
-    cart.push({
-      id: id,
-      quantity: 1,
-      price: productInfo.price,
-    });
+  if (cartItem) {
+    // Sản phẩm đã tồn tại trong giỏ hàng, tăng số lượng lên 1
+    cartItem.quantity += 1;
     onModalSuccess("Đã Thêm vào giỏ hàng!");
+  } else {
+    const productInfo = await getProductInfoById(id);
+    if (productInfo) {
+      cart.push({
+        id: id,
+        quantity: 1,
+        price: productInfo.price,
+      });
+      onModalSuccess("Đã Thêm vào giỏ hàng!");
+    }
   }
 
   updateQuantity();
   updateCart();
   calculateTotalBill();
 }
+
 //////////////////////////////////////////////////////
 // update cart
 function updateCart() {
