@@ -95,9 +95,8 @@ let onModalSuccess = (message) => {
 let cart = JSON.parse(localStorage.getItem("CART")) || [];
 updateQuantity();
 //////////////////////////////////////////////////////
-// add to cart
 window.addToCart = addToCart;
-// add to cart
+//////////////////////////////////////////////////////
 // add to cart
 async function addToCart(id) {
   const cartItem = cart.find((item) => item.id === id);
