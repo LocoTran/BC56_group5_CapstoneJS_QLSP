@@ -99,6 +99,7 @@ window.addToCart = addToCart;
 //////////////////////////////////////////////////////
 // add to cart
 async function addToCart(id) {
+  // Kiểm tra xem có bị trùng sản phẩm hay không
   const cartItem = cart.find((item) => item.id === id);
 
   if (cartItem) {
